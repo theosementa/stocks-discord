@@ -1,0 +1,3 @@
+dotenv
+yfinance
+currency_converter
