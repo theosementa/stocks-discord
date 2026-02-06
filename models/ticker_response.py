@@ -21,11 +21,6 @@ class TickerResponse:
         return "+" if value > 0 else ""
     
     def display_informations(self) -> str:
-        dates_to_fetch = self.period.get_dates_to_fetch()
-        
-        start_date_to_fetch_str = dates_to_fetch[0].strftime('%Y-%m-%d')
-        end_date_to_fetch_str = dates_to_fetch[1].strftime('%Y-%m-%d')
-    
         open_value_eur = round(convert_currency(self.open_value_raw), 2)
         close_value_eur = round(convert_currency(self.close_value_raw), 2)
         
@@ -34,7 +29,6 @@ class TickerResponse:
         
         return f"""
 ---{self.ticker}---
-{self.period.name} : {start_date_to_fetch_str} -> {end_date_to_fetch_str}
 Ouverture : {open_value_eur}€
 Fermeture : {close_value_eur}€
 Évolution : {self.get_symbol(evolution)}{evolution}% ({self.get_symbol(evolution_amount_eur)}{evolution_amount_eur}€)
